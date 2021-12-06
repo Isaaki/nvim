@@ -75,11 +75,17 @@ map("n", "<leader>h", "<cmd>noh<CR>", opts)
 
 -- Highlight on yank
 vim.api.nvim_exec(
-	[[
-  augroup YankHighlight
-    autocmd!
-    autocmd TextYankPost * silent! lua vim.highlight.on_yank()
-  augroup end
+	[[
+  augroup YankHighlight
+    autocmd!
+    autocmd TextYankPost * silent! lua vim.highlight.on_yank()
+  augroup end
 ]],
 	false
 )
+
+-- Disable auto comments
+vim.cmd([[
+autocmd BufNewFile,BufRead,FileType,OptionSet * set formatoptions-=cro
+autocmd BufNewFile,BufRead,FileType,OptionSet * setlocal formatoptions-=cro
+]])
