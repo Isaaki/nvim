@@ -9,7 +9,7 @@ end
 require("settings")
 
 require("nv-lsp")
--- require("nv-treesitter")
+require("nv-treesitter")
 require("nv-cmp")
 require("nv-telescope")
 require("nv-dashboard")
@@ -34,7 +34,7 @@ return require("packer").startup({
 			"williamboman/nvim-lsp-installer",
 		})
 
-		-- use({ "nvim-treesitter/nvim-treesitter", run = ":TSUpdate" })
+		use({ "nvim-treesitter/nvim-treesitter", run = ":TSUpdate" })
 
 		use({
 			"nvim-telescope/telescope.nvim",
@@ -131,19 +131,19 @@ return require("packer").startup({
 
 		use({ "onsails/lspkind-nvim" })
 
-		-- use({ "p00f/nvim-ts-rainbow", requires = "nvim-treesitter/nvim-treesitter" })
-		-- use({ "windwp/nvim-ts-autotag", requires = "nvim-treesitter/nvim-treesitter" })
-		-- use({
-		-- 	"JoosepAlviste/nvim-ts-context-commentstring",
-		-- 	requires = { "tpope/vim-commentary", "nvim-treesitter/nvim-treesitter" },
-		-- 	config = function()
-		-- 		require("nvim-treesitter.configs").setup({
-		-- 			context_commentstring = {
-		-- 				enable = true,
-		-- 			},
-		-- 		})
-		-- 	end,
-		-- })
+		use({ "p00f/nvim-ts-rainbow", requires = "nvim-treesitter/nvim-treesitter" })
+		use({ "windwp/nvim-ts-autotag", requires = "nvim-treesitter/nvim-treesitter" })
+		use({
+			"JoosepAlviste/nvim-ts-context-commentstring",
+			requires = { "tpope/vim-commentary", "nvim-treesitter/nvim-treesitter" },
+			config = function()
+				require("nvim-treesitter.configs").setup({
+					context_commentstring = {
+						enable = true,
+					},
+				})
+			end,
+		})
 
 		use({
 			"folke/tokyonight.nvim",

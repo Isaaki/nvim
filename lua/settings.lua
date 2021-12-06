@@ -40,7 +40,6 @@ map("", "<c-j>", "}", opts)
 map("", "<c-k>", "{", opts)
 map("", "<c-h>", "^", opts)
 map("", "<c-l>", "$", opts)
-map("", "Y", "y$", opts)
 
 -- Copy to clipboard
 map("v", "<leader>y", '"+y', opts)
@@ -71,13 +70,16 @@ map("t", "<esc><esc>", "<C-\\><C-N>", opts)
 map("v", ">", ">gv", opts)
 map("v", "<", "<gv", opts)
 
+-- Remove highlight
+map("n", "<leader>h", "<cmd>noh<CR>", opts)
+
 -- Highlight on yank
 vim.api.nvim_exec(
-	[[
-  augroup YankHighlight
-    autocmd!
-    autocmd TextYankPost * silent! lua vim.highlight.on_yank()
-  augroup end
+	[[
+  augroup YankHighlight
+    autocmd!
+    autocmd TextYankPost * silent! lua vim.highlight.on_yank()
+  augroup end
 ]],
 	false
 )
