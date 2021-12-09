@@ -90,11 +90,13 @@ return require("packer").startup({
 		})
 
 		use({
-			"hoob3rt/lualine.nvim",
+			"nvim-lualine/lualine.nvim",
 			requires = { "kyazdani42/nvim-web-devicons", opt = true },
 			config = function()
 				require("lualine").setup({
-					options = { theme = "neon" },
+					options = {
+						theme = "nightfox",
+					},
 				})
 			end,
 		})
@@ -153,11 +155,18 @@ return require("packer").startup({
 		-- 	end,
 		-- })
 
+		-- use({
+		-- 	"rafamadriz/neon",
+		-- 	config = function()
+		-- 		vim.g.neon_style = "dark"
+		-- 		vim.cmd([[colorscheme neon]])
+		-- 	end,
+		-- })
+
 		use({
-			"rafamadriz/neon",
+			"EdenEast/nightfox.nvim",
 			config = function()
-				vim.g.neon_style = "dark"
-				vim.cmd([[colorscheme neon]])
+				require("nightfox").load("nightfox")
 			end,
 		})
 
