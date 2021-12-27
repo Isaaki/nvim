@@ -1,7 +1,17 @@
 require("nvim-treesitter.configs").setup({
+	context_commentstring = {
+		enable = true,
+		enable_autocmd = false,
+	},
 	ensure_installed = { "typescript", "javascript", "lua", "html", "css" },
+	preview = false,
+	-- preview = {
+	-- 	check_mime_type = false,
+	-- 	treesitter = false,
+	-- },
 	highlight = {
 		enable = true,
+		additional_vim_regex_highlighting = false,
 	},
 	indent = {
 		enable = true,

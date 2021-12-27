@@ -20,6 +20,7 @@ require("nv-lspkind")
 require("nv-bufferline")
 require("nv-luasnip")
 require("nv-toggleterm")
+require("nv-smartq")
 
 return require("packer").startup({
 	function(use)
@@ -133,19 +134,14 @@ return require("packer").startup({
 
 		use({ "onsails/lspkind-nvim" })
 
-		use({ "p00f/nvim-ts-rainbow", requires = "nvim-treesitter/nvim-treesitter" })
-		use({ "windwp/nvim-ts-autotag", requires = "nvim-treesitter/nvim-treesitter" })
-		use({
-			"JoosepAlviste/nvim-ts-context-commentstring",
-			requires = { "tpope/vim-commentary", "nvim-treesitter/nvim-treesitter" },
-			config = function()
-				require("nvim-treesitter.configs").setup({
-					context_commentstring = {
-						enable = true,
-					},
-				})
-			end,
-		})
+		-- use({ "p00f/nvim-ts-rainbow", requires = "nvim-treesitter/nvim-treesitter" })
+		-- use({ "windwp/nvim-ts-autotag", requires = "nvim-treesitter/nvim-treesitter" })
+
+		-- -- Adds context commenting
+		-- use({
+		-- 	"JoosepAlviste/nvim-ts-context-commentstring",
+		-- 	requires = { "nvim-treesitter/nvim-treesitter" },
+		-- })
 
 		-- use({
 		-- 	"folke/tokyonight.nvim",
