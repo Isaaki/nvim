@@ -17,9 +17,9 @@ lsp.on_attach(function(client, bufnr)
     map('n', 'K', function() vim.lsp.buf.hover() end, { buffer = bufnr, desc = "Hover [LSP]" })
     map('n', '[d', function() vim.diagnostic.goto_next() end, { buffer = bufnr, desc = "Goto next diagnostic [LSP]" })
     map('n', ']d', function() vim.diagnostic.goto_prev() end, { buffer = bufnr, desc = "Goto prev diagnostic [LSP]" })
-    map('n', '<leader>lc', function() vim.lsp.buf.code_action() end, { buffer = bufnr, desc = "Code action [LSP]" })
-    map('n', '<leader>lrr', function() vim.lsp.buf.references() end, { buffer = bufnr, desc = "References [LSP]" })
-    map('n', '<leader>lrn', function() vim.lsp.buf.rename() end, { buffer = bufnr, desc = "Rename [LSP]" })
+    map('n', '<leader>oc', function() vim.lsp.buf.code_action() end, { buffer = bufnr, desc = "Code action [LSP]" })
+    map('n', '<leader>oR', function() vim.lsp.buf.references() end, { buffer = bufnr, desc = "References [LSP]" })
+    map('n', '<leader>or', function() vim.lsp.buf.rename() end, { buffer = bufnr, desc = "Rename [LSP]" })
 
     -- map('n', '<C-h>', function() vim.lsp.buf.signature_help() end, { buffer = bufnr, desc = "Signature help [LSP]" })
 
