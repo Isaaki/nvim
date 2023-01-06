@@ -1,6 +1,6 @@
 local map = function(mode, lhs, rhs, opts)
     if opts ~= nil then
-        opts = vim.tbl_extend("keep", opts, { noremap = true, silent = false })
+        opts = vim.tbl_extend("keep", opts, { silent = false })
     end
     vim.keymap.set(mode, lhs, rhs, opts)
 end
@@ -47,13 +47,13 @@ map("v", "<", "<gv", { desc = "Indent <" })
 map("v", "<A-k>", ":m '<-2<CR>gv=gv", { desc = "Move selected up" })
 map("v", "<A-j>", ":m '>+1<CR>gv=gv", { desc = "Move selected down" })
 
-map("n", "J", "mzJ`z")
+map("n", "J", "mzJ`z", { desc = "Nvim builtin" })
 
 -- Centering keymaps
-map("n", "<C-d>", "<C-d>zz")
-map("n", "<C-u>", "<C-u>zz")
-map("n", "n", "nzzzv")
-map("n", "N", "Nzzzv")
+map("n", "<C-d>", "<C-d>zz", { desc = "Half page down" })
+map("n", "<C-u>", "<C-u>zz", { desc = "Half page up" })
+map("n", "n", "nzzzv", { desc = "Search next" })
+map("n", "N", "Nzzzv", { desc = "Search prev" })
 
 -- Disable nigthmare realm
 map("n", "Q", "<nop>")
