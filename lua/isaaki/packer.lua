@@ -104,4 +104,8 @@ return require('packer').startup(function(use)
     use 'JoosepAlviste/nvim-ts-context-commentstring'
 
     use "vim-scripts/ReplaceWithRegister"
+
+    use { "akinsho/toggleterm.nvim", tag = '*', config = function()
+        require("toggleterm").setup()
+    end }
 end)
