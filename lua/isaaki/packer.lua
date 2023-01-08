@@ -92,4 +92,6 @@ return require('packer').startup(function(use)
     }
 
     use { "mg979/vim-visual-multi", branch = "master" }
+
+    use { "ThePrimeagen/harpoon", requires = { "nvim-lua/plenary.nvim" } }
 end)
