@@ -31,3 +31,14 @@ vim.opt.colorcolumn = '80'
 -- Disable comment on newline
 vim.api.nvim_create_autocmd("BufEnter",
     { callback = function() vim.opt.formatoptions = vim.opt.formatoptions - { "c", "r", "o" } end, })
+
+-- Highlight on yank
+vim.api.nvim_exec(
+	[[
+  augroup YankHighlight
+    autocmd!
+    autocmd TextYankPost * silent! lua vim.highlight.on_yank()
+  augroup end
+]],
+	false
+)
