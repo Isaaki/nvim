@@ -1,178 +1,54 @@
-local fn = vim.fn
+require("set")
+require("remap")
 
-local install_path = fn.stdpath("data") .. "/site/pack/packer/start/packer.nvim"
-if fn.empty(fn.glob(install_path)) > 0 then
-	fn.system({ "git", "clone", "https://github.com/wbthomason/packer.nvim", install_path })
-	vim.cmd("packadd packer.nvim")
+-- Packer bootstrap
+local ensure_packer = function()
+    local fn = vim.fn
+    local install_path = fn.stdpath('data') .. '/site/pack/packer/start/packer.nvim'
+    if fn.empty(fn.glob(install_path)) > 0 then
+        fn.system({ 'git', 'clone', '--depth', '1', 'https://github.com/wbthomason/packer.nvim', install_path })
+        vim.cmd [[packadd packer.nvim]]
+        return true
+    end
+    return false
 end
 
-require("settings")
+local packer_bootstrap = ensure_packer()
 
-require("nv-lsp")
-require("nv-treesitter")
-require("nv-cmp")
-require("nv-telescope")
-require("nv-dashboard")
-require("nv-tree")
--- require("nv-which-key")
-require("nv-null-ls")
-require("nv-lspkind")
-require("nv-bufferline")
-require("nv-luasnip")
-require("nv-toggleterm")
-require("nv-smartq")
+return require('packer').startup(function(use)
+    use 'wbthomason/packer.nvim'
 
-return require("packer").startup({
-	function(use)
-		-- Packer can manage itself
-		use("wbthomason/packer.nvim")
+    -- Basic plugins (No Config)
+    use("JoosepAlviste/nvim-ts-context-commentstring")
+    use("lewis6991/impatient.nvim")
+    use { "mg979/vim-visual-multi", branch = "master" }
+    use("vim-scripts/ReplaceWithRegister")
 
-		---------------
-		-- Essential --
-		---------------
-		use({
-			"neovim/nvim-lspconfig",
-			"williamboman/nvim-lsp-installer",
-		})
+    -- Plugins with configurations
+    use(require("plugin/comment"))
+    use(require("plugin/eyeliner"))
+    use(require("plugin/indent-tools"))
+    use(require("plugin/surround"))
+    use(require("plugin/textobjects"))
+    use(require("plugin/treesitter"))
+    use(require("plugin/whichkey"))
+    use(require("plugin/neodev"))
 
-		use({ "nvim-treesitter/nvim-treesitter", run = ":TSUpdate" })
+    if not vim.g.vscode then
+        use(require("plugin/autopairs"))
+        use(require("plugin/bufferline"))
+        use(require("plugin/colors"))
+        use(require("plugin/nvim-cmp"))
+        use(require("plugin/harpoon"))
+        use(require("plugin/lsp"))
+        use(require("plugin/lualine"))
+        use(require("plugin/telescope"))
+        use(require("plugin/undotree"))
+        use(require("plugin/trouble"))
+        use(require("plugin/toggleterm"))
+    end
 
-		use({
-			"nvim-telescope/telescope.nvim",
-			requires = {
-				{ "nvim-lua/plenary.nvim" },
-				{
-					"nvim-telescope/telescope-fzf-native.nvim",
-					run = "make",
-					config = function()
-						require("telescope").load_extension("fzf")
-					end,
-				},
-			},
-		})
-
-		use({
-			"jose-elias-alvarez/null-ls.nvim",
-			requires = { "nvim-lua/plenary.nvim", "neovim/nvim-lspconfig" },
-		})
-
-		use("hrsh7th/nvim-cmp") -- Main plugin
-		use("hrsh7th/cmp-buffer")
-		use("hrsh7th/cmp-nvim-lsp")
-		use({ "saadparwaiz1/cmp_luasnip", requires = { "L3MON4D3/LuaSnip" } })
-		use("hrsh7th/cmp-path")
-
-		use({ "rafamadriz/friendly-snippets" })
-		use({
-			"L3MON4D3/LuaSnip",
-			wants = "friendly-snippets",
-		})
-
-		use({
-			"kyazdani42/nvim-tree.lua",
-			requires = "kyazdani42/nvim-web-devicons",
-		})
-
-		use("folke/which-key.nvim")
-
-		-------------------
-		-- Non-essential --
-		-------------------
-		use({
-			"glepnir/dashboard-nvim",
-			requires = { "nvim-telescope/telescope.nvim" },
-		})
-
-		use({
-			"ahmedkhalf/project.nvim",
-			config = function()
-				require("project_nvim").setup({})
-			end,
-		})
-
-		use({
-			"nvim-lualine/lualine.nvim",
-			requires = { "kyazdani42/nvim-web-devicons", opt = true },
-			config = function()
-				require("lualine").setup({
-					options = {
-						theme = "nightfox",
-					},
-				})
-			end,
-		})
-
-		use({
-			"akinsho/bufferline.nvim",
-			requires = "kyazdani42/nvim-web-devicons",
-			config = function()
-				vim.opt.termguicolors = true
-				require("bufferline").setup({})
-			end,
-		})
-
-		use({ "akinsho/toggleterm.nvim" })
-
-		use({
-			"norcalli/nvim-colorizer.lua",
-			config = function()
-				require("colorizer").setup()
-			end,
-		})
-
-		use({
-			"windwp/nvim-autopairs",
-			config = function()
-				require("nvim-autopairs").setup()
-			end,
-		})
-
-		use({
-			"folke/todo-comments.nvim",
-			requires = "nvim-lua/plenary.nvim",
-		})
-
-		use({ "onsails/lspkind-nvim" })
-
-		-- use({ "p00f/nvim-ts-rainbow", requires = "nvim-treesitter/nvim-treesitter" })
-		-- use({ "windwp/nvim-ts-autotag", requires = "nvim-treesitter/nvim-treesitter" })
-
-		-- -- Adds context commenting
-		-- use({
-		-- 	"JoosepAlviste/nvim-ts-context-commentstring",
-		-- 	requires = { "nvim-treesitter/nvim-treesitter" },
-		-- })
-
-		-- use({
-		-- 	"folke/tokyonight.nvim",
-		-- 	config = function()
-		-- 		vim.g.tokyonight_style = "night"
-		-- 		vim.cmd([[colorscheme tokyonight]])
-		-- 	end,
-		-- })
-
-		-- use({
-		-- 	"rafamadriz/neon",
-		-- 	config = function()
-		-- 		vim.g.neon_style = "dark"
-		-- 		vim.cmd([[colorscheme neon]])
-		-- 	end,
-		-- })
-
-		use({
-			"EdenEast/nightfox.nvim",
-			config = function()
-				require("nightfox").load("nightfox")
-			end,
-		})
-
-		---------------------
-		-- Old Vim plugins --
-		---------------------
-		use("tpope/vim-commentary")
-		use("tpope/vim-surround")
-		use("vim-scripts/ReplaceWithRegister")
-		use("matze/vim-move")
-		use("marklcrns/vim-smartq")
-	end,
-})
+    if packer_bootstrap then
+        require('packer').sync()
+    end
+end)
