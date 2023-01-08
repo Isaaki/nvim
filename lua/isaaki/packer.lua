@@ -60,7 +60,13 @@ return require('packer').startup(function(use)
         config = function() require("nvim-autopairs").setup {} end
     }
 
-    use 'tpope/vim-commentary'
+    -- use 'tpope/vim-commentary'
+    use {
+        'numToStr/Comment.nvim',
+        config = function()
+            require('Comment').setup()
+        end
+    }
 
     use({
         "kylechui/nvim-surround",
