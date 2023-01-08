@@ -46,6 +46,8 @@ map("v", "<", "<gv", { desc = "Indent <" })
 -- Visual mode mode text verticaly
 map("v", "<A-k>", ":m '<-2<CR>gv=gv", { desc = "Move selected up" })
 map("v", "<A-j>", ":m '>+1<CR>gv=gv", { desc = "Move selected down" })
+map("n", "<A-k>", ":m -2<CR>", { desc = "Move line up" })
+map("n", "<A-j>", ":m +1<CR>", { desc = "Move line down" })
 
 map("n", "J", "mzJ`z", { desc = "Nvim builtin" })
 
