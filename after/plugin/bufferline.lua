@@ -17,8 +17,6 @@ local count_bufs_by_type = function(loaded_only)
     return count
 end
 
-
-
 vim.keymap.set('n', '<A-l>', vim.cmd.bnext, { desc = "Next buffer" })
 vim.keymap.set('n', '<A-h>', vim.cmd.bprev, { desc = "Prev buffer" })
 
@@ -27,10 +25,10 @@ vim.keymap.set('n', '<leader>q', function()
     local bufTable = count_bufs_by_type()
 
     if (bufTable.normal <= 1) then
-        print("normal quit")
+        print("Normal quit")
         vim.cmd("q")
     else
-        print("buffer quit")
+        print("Buffer quit")
         vim.api.nvim_buf_delete(0, {})
         -- vim.cmd("bd")
     end
@@ -40,10 +38,10 @@ vim.keymap.set('n', '<leader>Q', function()
     local bufTable = count_bufs_by_type()
 
     if (bufTable.normal <= 1) then
-        print("normal quit")
+        print("Normal quit")
         vim.cmd("q!")
     else
-        print("buffer quit")
+        print("Buffer quit")
         vim.api.nvim_buf_delete(0, { force = true })
         -- vim.cmd("bd!")
     end
