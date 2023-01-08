@@ -58,10 +58,5 @@ map("n", "N", "Nzzzv", { desc = "Search prev" })
 -- Disable nigthmare realm
 map("n", "Q", "<nop>")
 
--- Format
-map("n", "<leader>f", function()
-    vim.lsp.buf.format()
-end, { desc = "Format document [LSP]" })
-
 -- Enter Netrw
 map("n", "<leader>e", vim.cmd.Ex, { desc = "Enter Netrw" })
