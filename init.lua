@@ -46,6 +46,7 @@ return require('packer').startup(function(use)
         use(require("plugin/undotree"))
         use(require("plugin/trouble"))
         use(require("plugin/toggleterm"))
+        use(require("plugin/project"))
     end
 
     if packer_bootstrap then
