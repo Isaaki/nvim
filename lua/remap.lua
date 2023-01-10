@@ -10,6 +10,8 @@ vim.g.mapleader = " "
 -- Exit nvim
 map("i", "jk", "<Esc>")
 
+map("n", "<leader>c", function() vim.cmd("vnew $MYVIMRC") end, { desc = "Open init.lua" })
+
 --Remap for dealing with word wrap
 map("n", "k", "v:count == 0 ? 'gk' : 'k'", { expr = true, silent = true })
 map("n", "j", "v:count == 0 ? 'gj' : 'j'", { expr = true, silent = true })

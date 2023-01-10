@@ -17,5 +17,6 @@ return {
         end, { desc = "Project grep [Telescope]" })
         map("n", "<leader>h", builtin.help_tags, { desc = "Help [Telescope]"})
         map("n", "<leader>ok", builtin.keymaps, { desc = "Keymaps [Telescope]"})
+        map("n", "<leader>or", builtin.oldfiles, { desc = "Recent files [Telescope]"})
     end
 }

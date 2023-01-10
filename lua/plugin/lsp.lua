@@ -47,7 +47,6 @@ return {
             map('n', '<F2>', function() vim.lsp.buf.rename() end, { buffer = bufnr, desc = "Rename [LSP]" })
             map('n', '<F4>', function() vim.lsp.buf.code_action() end, { buffer = bufnr, desc = "Code action [LSP]" })
             map('n', '<leader>oc', function() vim.lsp.buf.code_action() end, { buffer = bufnr, desc = "Code action [LSP]" })
-            map('n', '<leader>or', function() vim.lsp.buf.rename() end, { buffer = bufnr, desc = "Rename [LSP]" })
             map('n', '<leader>oR', function() vim.lsp.buf.references() end, { buffer = bufnr, desc = "References [LSP]" })
             map('n', '<leader>f', function() vim.lsp.buf.format { async = true } end, { buffer = bufnr, desc = "Format document [LSP]" })
 
