@@ -37,6 +37,15 @@ return {
             set_lsp_keymaps = false,
         })
 
+        lsp.ensure_installed({
+            'tsserver',
+            'volar',
+            'sumneko_lua',
+            'pyright',
+            'html',
+            'jsonls'
+        })
+
         lsp.on_attach(function(client, bufnr)
             map('n', 'gD', function() vim.lsp.buf.declaration() end, { buffer = bufnr, desc = "Goto declaration [LSP]" })
             map('n', 'gd', function() vim.lsp.buf.definition() end, { buffer = bufnr, desc = "Goto definition [LSP]" })
@@ -58,4 +67,3 @@ return {
         lsp.setup()
     end
 }
-
