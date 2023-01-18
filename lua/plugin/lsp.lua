@@ -71,8 +71,8 @@ return {
 			"pyright",
 			"html",
 			"jsonls",
-			"prettierd",
-			"stylua",
+			-- "prettierd",
+			-- "stylua",
 		})
 
 		lsp.on_attach(function(client, bufnr)

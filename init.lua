@@ -47,6 +47,7 @@ return require('packer').startup(function(use)
         use(require("plugin/trouble"))
         use(require("plugin/toggleterm"))
         use(require("plugin/project"))
+        use(require("plugin/gitsigns"))
     end
 
     if packer_bootstrap then

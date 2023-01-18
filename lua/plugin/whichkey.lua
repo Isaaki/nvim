@@ -14,6 +14,9 @@ return {
         wk.register({
             o = {
                 name = "Plugins"
+            },
+            g = {
+                name = "Git"
             }
         }, { prefix = "<leader>" })
     end
