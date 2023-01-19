@@ -12,7 +12,7 @@ vim.opt.wrap = false
 
 vim.opt.swapfile = false
 vim.opt.backup = false
-vim.opt.undodir = os.getenv('HOME') .. '/.vim/undodir'
+vim.opt.undodir = os.getenv("HOME") .. "/.vim/undodir"
 vim.opt.undofile = true
 
 vim.opt.hlsearch = false
@@ -21,19 +21,22 @@ vim.opt.incsearch = true
 vim.opt.termguicolors = true
 
 vim.opt.scrolloff = 12
-vim.opt.signcolumn = 'yes'
-vim.opt.isfname:append('@-@')
+vim.opt.signcolumn = "yes"
+vim.opt.isfname:append("@-@")
 
 vim.opt.updatetime = 50
 
-vim.opt.colorcolumn = '80'
+vim.opt.colorcolumn = "80"
 vim.opt.cursorline = true
 
 vim.opt.splitright = true
 
 -- Disable comment on newline
-vim.api.nvim_create_autocmd("BufEnter",
-    { callback = function() vim.opt.formatoptions = vim.opt.formatoptions - { "c", "r", "o" } end, })
+vim.api.nvim_create_autocmd("BufEnter", {
+	callback = function()
+		vim.opt.formatoptions = vim.opt.formatoptions - { "c", "r", "o" }
+	end,
+})
 
 -- Highlight on yank
 vim.api.nvim_exec(

@@ -1,8 +1,8 @@
 local map = function(mode, lhs, rhs, opts)
-    if opts ~= nil then
-        opts = vim.tbl_extend("keep", opts, { silent = false })
-    end
-    vim.keymap.set(mode, lhs, rhs, opts)
+	if opts ~= nil then
+		opts = vim.tbl_extend("keep", opts, { silent = false })
+	end
+	vim.keymap.set(mode, lhs, rhs, opts)
 end
 
 vim.g.mapleader = " "
@@ -10,7 +10,9 @@ vim.g.mapleader = " "
 -- Exit nvim
 map("i", "jk", "<Esc>")
 
-map("n", "<leader>c", function() vim.cmd("vnew $MYVIMRC") end, { desc = "Open init.lua" })
+map("n", "<leader>c", function()
+	vim.cmd("vnew $MYVIMRC")
+end, { desc = "Open init.lua" })
 
 --Remap for dealing with word wrap
 map("n", "k", "v:count == 0 ? 'gk' : 'k'", { expr = true, silent = true })
