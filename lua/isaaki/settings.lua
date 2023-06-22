@@ -1,9 +1,9 @@
 vim.opt.nu = true
 vim.opt.relativenumber = true
 
-vim.opt.tabstop = 4
-vim.opt.softtabstop = 4
-vim.opt.shiftwidth = 4
+vim.opt.tabstop = 2
+vim.opt.softtabstop = 2
+vim.opt.shiftwidth = 2
 vim.opt.expandtab = true
 
 vim.opt.smartindent = true
@@ -12,7 +12,7 @@ vim.opt.wrap = false
 
 vim.opt.swapfile = false
 vim.opt.backup = false
-vim.opt.undodir = os.getenv("HOME") .. "/.vim/undodir"
+vim.opt.undodir = vim.fn.expand('$HOME/.vim/undodir')
 vim.opt.undofile = true
 
 vim.opt.hlsearch = false
@@ -31,6 +31,8 @@ vim.opt.cursorline = true
 
 vim.opt.splitright = true
 
+vim.g.editorconfig_charset = "utf-8"
+
 -- Disable comment on newline
 vim.api.nvim_create_autocmd("BufEnter", {
 	callback = function()
@@ -39,12 +41,28 @@ vim.api.nvim_create_autocmd("BufEnter", {
 })
 
 -- Highlight on yank
-vim.api.nvim_exec(
-	[[
-  augroup YankHighlight
-    autocmd!
-    autocmd TextYankPost * silent! lua vim.highlight.on_yank()
-  augroup end
-]],
-	false
-)
+local yankGrp = vim.api.nvim_create_augroup("YankHighlight", { clear = true })
+vim.api.nvim_create_autocmd("TextYankPost", {
+  command = "silent! lua vim.highlight.on_yank()",
+  group = yankGrp,
+})
+
+if vim.fn.has("wsl") == 1 then
+	vim.api.nvim_exec(
+		[[
+    let g:clipboard = {
+        \   'name': 'win32yank-wsl',
+        \   'copy': {
+        \      '+': 'win32yank.exe -i --crlf',
+        \      '*': 'win32yank.exe -i --crlf',
+        \    },
+        \   'paste': {
+        \      '+': 'win32yank.exe -o --lf',
+        \      '*': 'win32yank.exe -o --lf',
+        \   },
+        \   'cache_enabled': 0,
+        \ }
+  ]],
+		true
+	)
+end

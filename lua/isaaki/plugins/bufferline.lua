@@ -1,7 +1,7 @@
 return {
 	"akinsho/bufferline.nvim",
-	tag = "v3.*",
-	requires = {
+	version = "v3.*",
+	dependencies = {
 		"ojroques/nvim-bufdel",
 		"nvim-tree/nvim-web-devicons",
 	},

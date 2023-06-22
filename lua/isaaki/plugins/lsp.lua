@@ -1,6 +1,6 @@
 return {
 	"VonHeikemen/lsp-zero.nvim",
-	requires = {
+	dependencies = {
 		-- LSP Support
 		{ "neovim/nvim-lspconfig" },
 		{ "williamboman/mason.nvim" },
@@ -50,14 +50,15 @@ return {
 
 		null_ls.setup({
 			sources = {
-				null_ls.builtins.formatting.prettierd.with({ extra_args = { "--single-quote" } }),
+				-- null_ls.builtins.formatting.prettierd.with({ extra_args = { "--single-quote" } }),
+        null_ls.builtins.formatting.prettier.with({ extra_args = { "--single-quote" } }),
 				null_ls.builtins.formatting.stylua,
 			},
 		})
 
 		-- LSP setup
-
 		local lsp = require("lsp-zero")
+
 		lsp.preset("lsp-compe")
 
 		lsp.set_preferences({
@@ -67,13 +68,14 @@ return {
 		lsp.ensure_installed({
 			"tsserver",
 			"volar",
-			"sumneko_lua",
+			"lua_ls",
 			"pyright",
 			"html",
 			"jsonls",
 			-- "prettierd",
 			-- "stylua",
 		})
+
 
 		lsp.on_attach(function(client, bufnr)
 			map("n", "gD", function()
@@ -115,6 +117,6 @@ return {
 			-- map('n', 'gi', vim.lsp.buf.implementation, { buffer = bufnr, desc = ""})
 		end)
 
-		lsp.setup()
+    lsp.setup()
 	end,
 }

@@ -10,9 +10,22 @@ vim.g.mapleader = " "
 -- Exit nvim
 map("i", "jk", "<Esc>")
 
-map("n", "<leader>c", function()
-	vim.cmd("vnew $MYVIMRC")
-end, { desc = "Open init.lua" })
+-- Open init.lua depending on OS
+if not vim.fn.has("macunix") then
+	map("n", "<leader>c", function()
+		-- vim.cmd("vnew $MYVIMRC")
+		vim.cmd("vnew ~/nixfiles/packages/nvim/init.lua")
+	end, {
+		desc = "Open init.lua",
+	})
+else
+	map("n", "<leader>c", function()
+		-- vim.cmd("vnew $MYVIMRC")
+		vim.cmd("vnew ~/AppData/Local/nvim/init.lua")
+	end, {
+		desc = "Open init.lua",
+	})
+end
 
 --Remap for dealing with word wrap
 map("n", "k", "v:count == 0 ? 'gk' : 'k'", { expr = true, silent = true })
@@ -41,6 +54,7 @@ map("n", "<leader>Q", ":q!<CR>", { desc = "Quit!" })
 
 -- Saving & without formatting
 map("n", "<leader>w", "<cmd>w<CR>", { desc = "Save" })
+map("n", "<leader>W", "<c-w>q", { desc = "Close window" })
 -- map("n", "<leader>W", "<cmd>noa w<CR>", { desc = "Save without formating" })
 
 -- Indent without leaving Visual-mode
