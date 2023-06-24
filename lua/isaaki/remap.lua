@@ -1,8 +1,8 @@
 local map = function(mode, lhs, rhs, opts)
-  if opts ~= nil then
-    opts = vim.tbl_extend("keep", opts, { silent = false })
-  end
-  vim.keymap.set(mode, lhs, rhs, opts)
+	if opts ~= nil then
+		opts = vim.tbl_extend("keep", opts, { silent = false })
+	end
+	vim.keymap.set(mode, lhs, rhs, opts)
 end
 
 vim.g.mapleader = " "
@@ -12,24 +12,24 @@ map("i", "jk", "<Esc>")
 
 -- Open init.lua depending on OS
 if vim.fn.has("macunix") then
-  map("n", "<leader>c", function()
-    if vim.fn.executable("nix") == 1 then
-      print("Linux Nix")
-      vim.cmd("vnew ~/nixfiles/packages/nvim/init.lua")
-    else
-      print("Linux")
-      vim.cmd("vnew $MYVIMRC")
-    end
-  end, {
-  desc = "Open init.lua",
-})
+	map("n", "<leader>c", function()
+		if vim.fn.executable("nix") == 1 then
+			print("Linux Nix")
+			vim.cmd("vnew ~/nixfiles/packages/nvim/init.lua")
+		else
+			print("Linux")
+			vim.cmd("vnew $MYVIMRC")
+		end
+	end, {
+		desc = "Open init.lua",
+	})
 else
-  map("n", "<leader>c", function()
-    print("Windows")
-    vim.cmd("vnew ~/AppData/Local/nvim/init.lua")
-  end, {
-  desc = "Open init.lua",
-})
+	map("n", "<leader>c", function()
+		print("Windows")
+		vim.cmd("vnew ~/AppData/Local/nvim/init.lua")
+	end, {
+		desc = "Open init.lua",
+	})
 end
 
 --Remap for dealing with word wrap
