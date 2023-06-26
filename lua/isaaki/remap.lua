@@ -56,6 +56,7 @@ map("v", "<leader>P", '"+P', { desc = "Paste(sys) before cursor" })
 -- Quick quitting & saving
 map("n", "<leader>q", ":q<CR>", { desc = "Quit" })
 map("n", "<leader>Q", ":q!<CR>", { desc = "Quit!" })
+map("n", "<A-q>", ":quitall<CR>", { desc = "Quit!" })
 
 -- Saving & without formatting
 map("n", "<leader>w", "<cmd>w<CR>", { desc = "Save" })

@@ -43,6 +43,7 @@ require("lazy").setup({
 	require("isaaki/plugins/trouble"),
 	require("isaaki/plugins/toggleterm"),
 	require("isaaki/plugins/gitsigns"),
+	require("isaaki/plugins/auto-session"),
 	-- end
 })
 
