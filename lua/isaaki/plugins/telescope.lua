@@ -1,7 +1,7 @@
 return {
 	"nvim-telescope/telescope.nvim",
 	version = "0.1.0",
-	dependencies = { "nvim-lua/plenary.nvim", "ahmedkhalf/project.nvim" },
+	dependencies = { "nvim-lua/plenary.nvim" },
 	config = function()
 		local map = function(mode, lhs, rhs, opts)
 			if opts ~= nil then
@@ -15,8 +15,8 @@ return {
 		map("n", "<leader>og", builtin.git_files, { desc = "Git files [Telescope]" })
 		map("v", "<leader>os", function()
 			local cword = vim.fn.expand("<cword>")
-      vim.ui.input({ prompt = "grep > ", default = cword }, function (input)
-        builtin.grep_string({ search = input })
+			vim.ui.input({ prompt = "grep > ", default = cword }, function(input)
+				builtin.grep_string({ search = input })
 			end)
 		end, { desc = "Project grep [Telescope]" })
 		map("n", "<leader>os", function()
@@ -26,11 +26,10 @@ return {
 		map("n", "<leader>ok", builtin.keymaps, { desc = "Keymaps [Telescope]" })
 		map("n", "<leader>or", builtin.oldfiles, { desc = "Recent files [Telescope]" })
 
-
 		-- Project.nvim
-		require("project_nvim").setup()
-		require("telescope").load_extension("projects")
+		-- require("project_nvim").setup()
+		-- require("telescope").load_extension("projects")
 
-		map("n", "<leader>op", require'telescope'.extensions.projects.projects, {desc = "Projects [Project.nvim]"})
+		-- map("n", "<leader>op", require("telescope").extensions.projects.projects, { desc = "Projects [Project.nvim]" })
 	end,
 }
