@@ -17,6 +17,7 @@
   "eyeliner.nvim": { "branch": "main", "commit": "214e6ff4a0c786b9facac9d2bd267f08cc5fc0bb" },
   "friendly-snippets": { "branch": "main", "commit": "5749f093759c29e3694053d048ceb940fe12c3d3" },
   "gitsigns.nvim": { "branch": "main", "commit": "a36bc3360d584d39b4fb076d855c4180842d4444" },
+  "hardtime.nvim": { "branch": "main", "commit": "449e235ea763571ce38396cfd2748817b41fd833" },
   "harpoon": { "branch": "master", "commit": "21f4c47c6803d64ddb934a5b314dcb1b8e7365dc" },
   "impatient.nvim": { "branch": "main", "commit": "47302af74be7b79f002773011f0d8e85679a7618" },
   "indent-tools.nvim": { "branch": "master", "commit": "cda3cf350d04a58ca47f698068e20ba75c382a81" },
