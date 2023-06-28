@@ -33,6 +33,9 @@ vim.opt.splitright = true
 
 vim.g.editorconfig_charset = "utf-8"
 
+-- Loads plugins faster
+vim.loader.enable()
+
 -- Disable comment on newline
 vim.api.nvim_create_autocmd("BufEnter", {
 	callback = function()

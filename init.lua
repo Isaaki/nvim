@@ -16,7 +16,6 @@ vim.opt.rtp:prepend(lazypath)
 
 require("lazy").setup({
 	-- Basic plugins (No Config)
-	"lewis6991/impatient.nvim",
 	{ "mg979/vim-visual-multi", branch = "master" },
 	"vim-scripts/ReplaceWithRegister",
 
