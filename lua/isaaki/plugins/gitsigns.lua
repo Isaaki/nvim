@@ -37,10 +37,9 @@ return {
 					gs.blame_line({ full = true })
 				end, { desc = "Git blame line [Gitsigns]" })
 				map("n", "<leader>gB", gs.toggle_current_line_blame, { desc = "Git toggle blame line [Gitsigns]" })
-				map("n", "<leader>gd", gs.diffthis, { desc = "Git diff [Gitsigns]" })
-				map("n", "<leader>gD", function()
-					gs.diffthis("~")
-				end, { desc = "Git diff ~ [Gitsigns]" })
+				map("n", "<leader>gd", gs.preview_hunk_inline, { desc = "Git diff line[Gitsigns]" })
+				map("n", "<leader>gt", gs.toggle_word_diff, { desc = "Git diff toggle[Gitsigns]" })
+				map("n", "<leader>gD", gs.diffthis, { desc = "Git diff [Gitsigns]" })
 
 				-- map({ "n", "v" }, "<leader>hs", ":Gitsigns stage_hunk<CR>")
 				-- map({ "n", "v" }, "<leader>hr", ":Gitsigns reset_hunk<CR>")
