@@ -4,8 +4,14 @@
 
 vim.opt.scrolloff = 20
 vim.opt.updatetime = 50
-vim.g.editorconfig_charset = "utf-8"
 vim.api.nvim_exec("language en_US", true)
+
+-- Disable formatting
+vim.api.nvim_create_autocmd({ "FileType" }, {
+  callback = function()
+    vim.b.autoformat = false
+  end,
+})
 
 -- Disable comment on newline
 vim.api.nvim_create_autocmd("BufEnter", {
