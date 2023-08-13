@@ -25,3 +25,31 @@ vim.opt.foldlevel = 20
 vim.opt.foldmethod = "expr"
 vim.opt.foldexpr = "nvim_treesitter#foldexpr()"
 vim.opt.foldenable = false
+
+-- Neovide config
+if vim.g.neovide then
+  vim.o.guifont = "ComicCodeLigatures NF:h14" -- text below applies for VimScript
+  vim.g.neovide_scroll_animation_length = 0.2
+
+  local function set_ime(args)
+    if args.event:match("Enter$") then
+      vim.g.neovide_input_ime = true
+    else
+      vim.g.neovide_input_ime = false
+    end
+  end
+
+  local ime_input = vim.api.nvim_create_augroup("ime_input", { clear = true })
+
+  vim.api.nvim_create_autocmd({ "InsertEnter", "InsertLeave" }, {
+    group = ime_input,
+    pattern = "*",
+    callback = set_ime,
+  })
+
+  vim.api.nvim_create_autocmd({ "CmdlineEnter", "CmdlineLeave" }, {
+    group = ime_input,
+    pattern = "[/\\?]",
+    callback = set_ime,
+  })
+end
