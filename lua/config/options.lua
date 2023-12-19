@@ -21,10 +21,15 @@ vim.api.nvim_create_autocmd("BufEnter", {
 })
 
 -- Fix fold
-vim.opt.foldlevel = 20
-vim.opt.foldmethod = "expr"
-vim.opt.foldexpr = "nvim_treesitter#foldexpr()"
-vim.opt.foldenable = false
+vim.api.nvim_create_autocmd("BufEnter", {
+  callback = function()
+    if vim.opt.foldmethod:get() == "expr" then
+      vim.schedule(function()
+        vim.opt.foldmethod = "expr"
+      end)
+    end
+  end,
+})
 
 -- Neovide config
 if vim.g.neovide then
