@@ -13,12 +13,15 @@ end
 vim.opt.rtp:prepend(lazypath)
 
 require("lazy").setup({
+  -- Colorscheme
   { 
     "rebelot/kanagawa.nvim",
     config = function()
       vim.cmd.colorscheme("kanagawa-wave")
     end,
   },
+
+  -- Folding
   {
     "kevinhwang91/nvim-ufo",
     dependencies = { "kevinhwang91/promise-async", "nvim-treesitter/nvim-treesitter" },
@@ -35,6 +38,8 @@ require("lazy").setup({
       })
     end,
   },
+
+  -- Treesitter
   {
     "nvim-treesitter/nvim-treesitter",
     dependencies = {
