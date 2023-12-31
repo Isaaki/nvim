@@ -10,7 +10,7 @@ return {
     dependencies = "williamboman/mason.nvim",
     config = function()
       require("mason-lspconfig").setup {
-        ensure_installed = { "lua_ls" },
+        ensure_installed = { "lua_ls", "tsserver", "clangd" },
         automatic_installation = false,
       }
     end
@@ -18,8 +18,6 @@ return {
   {
     "neovim/nvim-lspconfig",
     config = function()
-      vim.lsp.set_log_level("debug")
-
       local lspconfig = require('lspconfig')
       lspconfig.lua_ls.setup {
         on_init = function(client)
@@ -50,6 +48,7 @@ return {
         end
       }
       lspconfig.tsserver.setup {}
+      lspconfig.clangd.setup {}
 
 
       -- Use LspAttach autocommand to only map the following keys
