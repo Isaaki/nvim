@@ -4,5 +4,8 @@
     "library": [
       "C:/Portable/nvim/share/nvim/runtime/lua",
     ]
-  }
+  },
+    "diagnostics.globals": [
+        "vim"
+    ]
 }
